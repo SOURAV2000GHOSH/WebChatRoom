@@ -1,6 +1,6 @@
 FROM adoptopenjdk/maven-openjdk8 AS build
 COPY . .
-RUN mvn clean package -DskipTests
+RUN mvn clean install -DskipTests
 
 FROM FROM openjdk:8-jdk-slim
 COPY --from=build /target/webchat-0.0.1-SNAPSHOT.jar webchatroom.jar
